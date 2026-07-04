@@ -1,6 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+    
 [System.Serializable]
 public class Shelf : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class Shelf : MonoBehaviour
     public List<ShelfSlot> slots;
     public GameObject cassettePrefab;
     public float thickness = 0.05f;
+    
+    private Color _genreMatchColor = Color.white; 
+    private Color _perfectMatchColor = new Color(1f, 0.75f, 0f);
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,15 +33,17 @@ public class Shelf : MonoBehaviour
         }
         
         slots[GetSlotIndex(slotID)].currentCount += 1;
-        SpawnCassette(slotID, cassette);
+        GameObject newlySpawned = SpawnCassette(slotID, cassette);
         
         if (slots[GetSlotIndex(slotID)].expectedMovie.title == cassette.title)
         {
+            StartCoroutine(FlashCassette(newlySpawned, _perfectMatchColor));
             return ("Cassette Is Matched");
         }
         
         if (shelfGenre == cassette.genre)
         {
+            StartCoroutine(FlashCassette(newlySpawned, _genreMatchColor));
             return ("Genre Is Matched");
         }
         
@@ -55,17 +61,22 @@ public class Shelf : MonoBehaviour
 
         slots[index].currentCount -= 1;
 
+        CassetteData data = slots[index].spawnedCassettes[^1].GetComponent<PhysicalCassette>().cassetteData;
         Destroy(slots[index].spawnedCassettes[^1]);
         slots[index].spawnedCassettes.RemoveAt(slots[index].spawnedCassettes.Count - 1);
         
-        return slots[GetSlotIndex(slotID)].expectedMovie;
+        return data;
     }
 
-    public void SpawnCassette(int slotID, CassetteData cassette)
+    public GameObject SpawnCassette(int slotID, CassetteData cassette)
     {
-        Vector3 spawnPos = slots[GetSlotIndex(slotID)].slotTransform.position + (slots[GetSlotIndex(slotID)].slotTransform.right * (slots[GetSlotIndex(slotID)].currentCount - 1) * thickness);
+        int index = GetSlotIndex(slotID);
+
+        Vector3 startPos = slots[index].slotTransform.position - (slots[index].slotTransform.right * 0.10f); 
+
+        Vector3 spawnPos = startPos + (slots[index].slotTransform.right * ((slots[index].currentCount - 1) * thickness));
             
-        GameObject addedCassette = Instantiate(cassettePrefab,spawnPos ,slots[GetSlotIndex(slotID)].slotTransform.rotation);
+        GameObject addedCassette = Instantiate(cassettePrefab, spawnPos, slots[GetSlotIndex(slotID)].slotTransform.rotation);
         
         addedCassette.transform.Rotate(270f, 0f, 270f);
         
@@ -81,6 +92,7 @@ public class Shelf : MonoBehaviour
         PhysicalCassette pc = addedCassette.GetComponent<PhysicalCassette>();
         pc.shelfRef = this;
         pc.slotIDForShelf = slotID;
+        return addedCassette;
     }
 
     public int GetSlotIndex(int slotID)
@@ -97,4 +109,59 @@ public class Shelf : MonoBehaviour
         
         return index;
     }
+    
+    private IEnumerator FlashCassette(GameObject cassette, Color flashColor)
+    {
+        if (cassette == null) yield break;
+        
+        Outline outline = cassette.GetComponent<Outline>();
+        
+        if (outline == null) outline = cassette.GetComponentInChildren<Outline>();
+        
+        if (outline == null) yield break;
+
+        Color originalColor = outline.OutlineColor;
+        float originalWidth = outline.OutlineWidth;
+        bool originalEnabled = outline.enabled;
+        
+        outline.OutlineColor = flashColor;
+        outline.OutlineWidth = 6f;
+        outline.enabled = true;
+        
+        yield return new WaitForSeconds(0.25f);
+        
+        float duration = 0.4f;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            if (outline == null) yield break;
+
+            elapsed += Time.deltaTime;
+            float progress = elapsed / duration;
+            
+            outline.OutlineColor = Color.Lerp(flashColor, new Color(flashColor.r, flashColor.g, flashColor.b, 0f), progress);
+            outline.OutlineWidth = Mathf.Lerp(6f, 0f, progress);
+
+            yield return null;
+        }
+        
+        if (outline != null)
+        {
+            PlayerInventory inventory = FindObjectOfType<PlayerInventory>();
+            
+            outline.OutlineColor = Color.white;
+            outline.OutlineWidth = 2f;
+            
+            if (inventory != null && inventory.enabled && inventory.CurrentSeenOutline == outline)
+            {
+                outline.enabled = true;
+            }
+            else
+            {
+                outline.enabled = false; 
+            }
+        }
+    }
 }
+

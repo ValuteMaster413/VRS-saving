@@ -28,6 +28,12 @@ namespace StarterAssets
 
 		public void OnLook(InputValue value)
 		{
+			if (Time.timeScale == 0f)
+			{
+				LookInput(Vector2.zero);
+				return;
+			}
+          
 			if(cursorInputForLook)
 			{
 				LookInput(value.Get<Vector2>());

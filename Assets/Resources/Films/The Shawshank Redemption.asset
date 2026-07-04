@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d801ebcaab854af4aa8f9b9a0eecb8ac, type: 3}
+  m_Name: The Shawshank Redemption
+  m_EditorClassIdentifier: Assembly-CSharp::CassetteData
+  title: ' The Shawshank Redemption'
+  genre: Drama 1
+  position: 11
+  description: A wrongfully convicted banker forms a close friendship with a hardened
+    convict over a quarter century while retaining his humanity through simple acts
+    of compassion.
+  coverArt: {fileID: -1029623761, guid: 6f7e2adb08c331441889d587c7997d2e, type: 3}
