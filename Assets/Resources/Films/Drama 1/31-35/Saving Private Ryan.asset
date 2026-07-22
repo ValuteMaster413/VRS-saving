@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d801ebcaab854af4aa8f9b9a0eecb8ac, type: 3}
+  m_Name: Saving Private Ryan
+  m_EditorClassIdentifier: Assembly-CSharp::CassetteData
+  title: Saving Private Ryan
+  genre: Drama 1
+  position: 32
+  description: Following the Normandy Landings, a group of U.S. soldiers go behind
+    enemy lines to retrieve a paratrooper whose brothers have been killed in action.
+  coverArt: {fileID: 1320435311, guid: 1008775d2b4030a4280d26923eb70c20, type: 3}

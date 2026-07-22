@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d801ebcaab854af4aa8f9b9a0eecb8ac, type: 3}
+  m_Name: Project Hail Mary
+  m_EditorClassIdentifier: Assembly-CSharp::CassetteData
+  title: Project Hail Mary
+  genre: SciFi 1
+  position: 12
+  description: 
+  coverArt: {fileID: 456885332, guid: 48b46b809498b914198d86f79b7ded01, type: 3}

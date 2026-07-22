@@ -5,6 +5,8 @@ using TMPro;
 
 public class PlayerInventory : MonoBehaviour
 { 
+    public static PlayerInventory Instance { get; private set; }
+    
     private List<CassetteData> _cassetteStack = new List<CassetteData>();
     private List<GameObject> _visualBoxes = new List<GameObject>();
     
@@ -27,6 +29,33 @@ public class PlayerInventory : MonoBehaviour
     public float throwForce = 5f;
     public float thickness = 0.05f;
     
+    private Shelf[] _allShelves;
+    private PhysicalCassette[] _allCassettes;
+    private int _totalSlots = 0;
+
+    private int _totalCassettesInWorld = 0;
+    private int _placedCassettes = 0;
+
+    private float _lastSaveTime;
+    public float autoSaveInterval = 900f;
+    
+    [Header("Audio Settings")]
+    public AudioSource audioSource;
+    public AudioClip pickUpSound;
+    public AudioClip placeSound;
+    public AudioClip dropSound;
+
+    [Header("Tutorial Slides")] 
+    public GameObject firstTutorialSlide;
+    public GameObject pickUpTutorialSlide;
+    public GameObject placeTutorialSlide;
+
+    private bool _showTutorial;
+    
+    private bool _hasShownFirstTutorialSlide = false;
+    private bool _hasShownPickUptTutorialSlide = false;
+    private bool _hasShownPlaceTutorialSlide = false;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -35,7 +64,67 @@ public class PlayerInventory : MonoBehaviour
             LoadSavedGame();
         }
         
+        _allShelves = FindObjectsOfType<Shelf>();
+        _totalSlots = _allShelves.Length * 25;
+        
+        _allCassettes = FindObjectsOfType<PhysicalCassette>();
+        _totalCassettesInWorld = _allCassettes.Length;
+        
+        _placedCassettes = 0;
+        foreach(var cas in _allCassettes)
+        {
+            if(cas != null && cas.isShelved) _placedCassettes++;
+        }
+        
         InitPreviewAndUI();
+        
+        _lastSaveTime = Time.time;
+        StartCoroutine(AutoSaveCoroutine());
+        
+        _showTutorial = PlayerPrefs.GetInt("ShowTutorial", 1) == 1;
+        
+        if (_showTutorial && firstTutorialSlide != null && !_hasShownFirstTutorialSlide)
+        {
+            _hasShownFirstTutorialSlide = true;
+            firstTutorialSlide.SetActive(true);
+            Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+    }
+    
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    
+    public int GetMinutesSinceLastSave()
+    {
+        return Mathf.FloorToInt((Time.time - _lastSaveTime) / 60f);
+    }
+    
+    public void PerformSave()
+    {
+        SaveData data = SaveCreation();
+        SaveManager.Save(data);
+        _lastSaveTime = Time.time;
+        Debug.Log("Game Saved Successfully!");
+    }
+    
+    private IEnumerator AutoSaveCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(autoSaveInterval);
+            PerformSave();
+        }
     }
 
     private void InitPreviewAndUI()
@@ -64,12 +153,9 @@ public class PlayerInventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         if (Time.timeScale == 0f) return;
         
         SeenObject();
-
-        UpdateCassetteCounterInterface();
         
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -82,67 +168,94 @@ public class PlayerInventory : MonoBehaviour
         }
 
         HandleScrollInventory();
-        UpdateShelvesCounterInterface();
+    }
+
+    private bool IsLineOfClear(RaycastHit targetHit)
+    {
+        Vector3 origin = Camera.main.transform.position;
+        Vector3 direction = targetHit.point - origin;
+        float distance = direction.magnitude;
+        
+        if (Physics.Raycast(origin, direction.normalized, out RaycastHit obstacleHit, distance - 0.05f, LayerMask.GetMask("Default")))
+        {
+            if (obstacleHit.collider.gameObject != targetHit.collider.gameObject && 
+                !obstacleHit.transform.IsChildOf(targetHit.transform))
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public void SeenObject()
     {
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
-
+        
         if (Physics.Raycast(ray, out hit, 3f, LayerMask.GetMask("Cassette")))
         {
-            Outline currentOutline = hit.collider.GetComponent<Outline>();
-
-            if (currentOutline != null)
+            if (IsLineOfClear(hit))
             {
-                if (_lastSeenOutline != currentOutline)
+                Outline currentOutline = hit.collider.GetComponent<Outline>();
+
+                if (currentOutline != null)
                 {
-                    if (_lastSeenOutline != null)
+                    if (_lastSeenOutline != currentOutline)
                     {
-                        _lastSeenOutline.enabled = false;
+                        if (_lastSeenOutline != null)
+                        {
+                            _lastSeenOutline.enabled = false;
+                        }
+
+                        _lastSeenOutline = currentOutline;
+                        _lastSeenOutline.enabled = true;
+
+                        cassetteNameText.text = hit.collider.GetComponent<PhysicalCassette>().cassetteData.name;
                     }
 
-                    _lastSeenOutline = currentOutline;
-                    _lastSeenOutline.enabled = true;
-                    
-                    cassetteNameText.text = hit.collider.GetComponent<PhysicalCassette>().cassetteData.name;
+                    _cassettePreview.SetActive(false);
+
+                    return;
                 }
-                
-                _cassettePreview.SetActive(false);
-                
-                return; 
             }
         }
         else if (Physics.Raycast(ray, out hit, 3f, LayerMask.GetMask("ShelfSlot")))
         {
-            ShelfSlotCollider slotCollider = hit.collider.GetComponent<ShelfSlotCollider>();
-            int index = slotCollider.parentShelf.GetSlotIndex(slotCollider.slotID);
-            var targetSlot = slotCollider.parentShelf.slots[index];
-            
-            if (_cassetteStack.Count > 0 && targetSlot.currentCount < targetSlot.countOfMovies)
+            if (IsLineOfClear(hit))
             {
-                _cassettePreview.SetActive(true);
+                ShelfSlotCollider slotCollider = hit.collider.GetComponent<ShelfSlotCollider>();
+                int index = slotCollider.parentShelf.GetSlotIndex(slotCollider.slotID);
+                var targetSlot = slotCollider.parentShelf.slots[index];
+
+                if (_cassetteStack.Count > 0 && targetSlot.currentCount < targetSlot.countOfMovies)
+                {
+                    _cassettePreview.SetActive(true);
+
+                    Transform slotTr = slotCollider.parentShelf.slots[index].slotTransform;
+                    int currentCount = slotCollider.parentShelf.slots[index].currentCount;
+
+                    Vector3 startPos = slotTr.position - (slotTr.right * 0.11f);
+                    Vector3 previewPos = startPos + (slotTr.right * (currentCount * thickness));
+
+                    _cassettePreview.transform.position = previewPos;
+                    _cassettePreview.transform.rotation = slotTr.rotation;
+                    _cassettePreview.transform.Rotate(270f, 0f, 270f);
                 
-                Transform slotTr = slotCollider.parentShelf.slots[index].slotTransform;
-                int currentCount = slotCollider.parentShelf.slots[index].currentCount;
-                
-                Vector3 startPos = slotTr.position - (slotTr.right * 0.11f); 
-                Vector3 previewPos = startPos + (slotTr.right * (currentCount * thickness));
-                
-                _cassettePreview.transform.position = previewPos;
-                _cassettePreview.transform.rotation = slotTr.rotation;
-                _cassettePreview.transform.Rotate(270f, 0f, 270f);
-            }
-            else
-            {
-                _cassettePreview.SetActive(false);
+
+                    if (_lastSeenOutline != null)
+                    {
+                        _lastSeenOutline.enabled = false;
+                        _lastSeenOutline = null;
+                        cassetteNameText.text = null;
+                    }
+
+                    return;
+                }
             }
         }
-        else
-        {
-            _cassettePreview.SetActive(false);
-        }
+        
+        _cassettePreview.SetActive(false);
 
         if (_lastSeenOutline != null && (!hit.collider || hit.collider.gameObject.layer != LayerMask.NameToLayer("Cassette")))
         {
@@ -154,30 +267,15 @@ public class PlayerInventory : MonoBehaviour
 
     public void UpdateCassetteCounterInterface()
     {
-        PhysicalCassette[] allCassettes = FindObjectsOfType<PhysicalCassette>();
-        int placedCassettes = 0;
-
-        foreach (var cas in allCassettes)
-        {
-            if (cas.isShelved)
-            {
-                placedCassettes++;
-            }
-        }
-        
-        placedCassettesText.text = placedCassettes + "/" + allCassettes.Length;
+        placedCassettesText.text = _placedCassettes + "/" + _totalCassettesInWorld;
     }
     
     public void UpdateShelvesCounterInterface()
     {
-        Shelf[] allShelves = FindObjectsOfType<Shelf>();
         int correctSlots = 0;
-        int totalSlots = 0;
 
-        foreach (var shelf in allShelves)
+        foreach (var shelf in _allShelves)
         {
-            totalSlots += shelf.slots.Count;
-            
             for (int i = 0; i < shelf.slots.Count; i++)
             {
                 if (shelf.slots[i].IsRightFilled())
@@ -189,7 +287,7 @@ public class PlayerInventory : MonoBehaviour
         
         if (filledShelvesText != null)
         {
-            filledShelvesText.text = correctSlots + "/" + totalSlots;
+            filledShelvesText.text = correctSlots + "/" + _totalSlots;
         }
     }
 
@@ -198,9 +296,16 @@ public class PlayerInventory : MonoBehaviour
         CassetteData data = cassette.GetComponent<PhysicalCassette>().cassetteData;
         _cassetteStack.Add(data);
         
+        if (audioSource != null && pickUpSound != null)
+        {
+            audioSource.PlayOneShot(pickUpSound, 0.8f);
+        }
+        
         Destroy(cassette);
         
         RefreshHandVisuals();
+        UpdateCassetteCounterInterface();
+        UpdateShelvesCounterInterface();
     }
 
     public void Interact()
@@ -210,30 +315,56 @@ public class PlayerInventory : MonoBehaviour
         
         if (Physics.Raycast(ray, out hit, 3f, LayerMask.GetMask("Cassette")))
         {
+            if (!IsLineOfClear(hit)) return;
+            
             PhysicalCassette physicalCassette = hit.collider.GetComponent<PhysicalCassette>();
-    
+
             if (physicalCassette != null)
             {
                 if (_cassetteStack.Count < maxCarryCount)
                 {
                     if (physicalCassette.isShelved)
                     {
-                        CassetteData takenData = physicalCassette.shelfRef.CassetteIsTaken(physicalCassette.slotIDForShelf);
+                        CassetteData takenData =
+                            physicalCassette.shelfRef.CassetteIsTaken(physicalCassette.slotIDForShelf);
                         if (takenData != null)
                         {
                             _cassetteStack.Add(takenData);
+                            _placedCassettes--;
                             RefreshHandVisuals();
+
                         }
                     }
                     else
                     {
                         PickUpCassette(hit.collider.gameObject);
                     }
+
+                    if (audioSource != null && pickUpSound != null)
+                    {
+                        audioSource.PlayOneShot(pickUpSound, 0.8f);
+                    }
+                    
+                    UpdateCassetteCounterInterface();
+                    UpdateShelvesCounterInterface();
                 }
+            }
+            
+            _showTutorial = PlayerPrefs.GetInt("ShowTutorial", 1) == 1;
+
+            if (_showTutorial && pickUpTutorialSlide != null && !_hasShownPickUptTutorialSlide)
+            {
+                _hasShownPickUptTutorialSlide = true;
+                pickUpTutorialSlide.SetActive(true);
+                Time.timeScale = 0f;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
         }
         else if (Physics.Raycast(ray, out hit, 3f, LayerMask.GetMask("ShelfSlot")))
         {
+            if (!IsLineOfClear(hit)) return;
+            
             if (_cassetteStack.Count <= maxCarryCount)
             {
                 if (_cassetteStack.Count > 0)
@@ -247,13 +378,34 @@ public class PlayerInventory : MonoBehaviour
                     if (result != null && result != "Slot Is Full")
                     {
                         _cassetteStack.RemoveAt(_cassetteStack.Count - 1);
+                        _placedCassettes++;
                         RefreshHandVisuals();
+                        UpdateCassetteCounterInterface();
+                        UpdateShelvesCounterInterface();
+                        
+                        if (audioSource != null && placeSound != null)
+                        {
+                            audioSource.PlayOneShot(placeSound, 0.8f);
+                        }
+                        
+                        _showTutorial = PlayerPrefs.GetInt("ShowTutorial", 1) == 1;
+
+                        if (_showTutorial && placeTutorialSlide != null && !_hasShownPlaceTutorialSlide)
+                        {
+                            _hasShownPlaceTutorialSlide = true;
+                            placeTutorialSlide.SetActive(true);
+                            Time.timeScale = 0f;
+                            Cursor.lockState = CursorLockMode.None;
+                            Cursor.visible = true;
+                        }
                     }
                 }
             }
         }
         else if (Physics.Raycast(ray, out hit, 3f, LayerMask.GetMask("DeskReader")))
         {
+            if (!IsLineOfClear(hit)) return;
+            
             if (_cassetteStack.Count != 0)
             {
                 DeskReader deskReader = hit.collider.GetComponent<DeskReader>();
@@ -263,6 +415,13 @@ public class PlayerInventory : MonoBehaviour
                 {
                     _cassetteStack.RemoveAt(_cassetteStack.Count - 1);
                     RefreshHandVisuals();
+                    UpdateCassetteCounterInterface();
+                    UpdateShelvesCounterInterface();
+                    
+                    if (audioSource != null && placeSound != null)
+                    {
+                        audioSource.PlayOneShot(placeSound, 0.8f);
+                    }
                 }
             }
         }
@@ -286,6 +445,11 @@ public class PlayerInventory : MonoBehaviour
         }
         
         _cassetteStack.RemoveAt(_cassetteStack.Count - 1);
+        
+        if (audioSource != null && dropSound != null)
+        {
+            audioSource.PlayOneShot(dropSound, 0.8f);
+        }
         
         RefreshHandVisuals();
     }
@@ -420,20 +584,33 @@ public class PlayerInventory : MonoBehaviour
             return;
         }
         
+        CassetteData[] allLoadedFilms = Resources.LoadAll<CassetteData>("Films");
+        
+        Dictionary<string, CassetteData> filmsDictionary = new Dictionary<string, CassetteData>();
+        
+        foreach (var film in allLoadedFilms)
+        {
+            if (film != null && !filmsDictionary.ContainsKey(film.title))
+            {
+                filmsDictionary.Add(film.title.Trim(), film); 
+            }
+        }
+        
         PhysicalCassette[] allCassettes = FindObjectsOfType<PhysicalCassette>();
 
         foreach (var cassette in allCassettes)
         {
-            Destroy(cassette.gameObject);
+            DestroyImmediate(cassette.gameObject);
         }
         
         Debug.Log("ALL CASSETTES DESTROYED");
 
         foreach (var cassette in saveData.cassettesInHands)
         {
-            CassetteData data = Resources.Load<CassetteData>("Films/" + cassette.Trim());
-            
-            if (data != null) _cassetteStack.Add(data);
+            if (filmsDictionary.TryGetValue(cassette.Trim(), out CassetteData handData))
+            {
+                _cassetteStack.Add(handData);
+            }
         }
         
         Debug.Log("CASSETTES IN HANDS SPAWNED");
@@ -447,11 +624,13 @@ public class PlayerInventory : MonoBehaviour
             if (cassette.state == 1)
             {
                 GameObject newCassette = Instantiate(cassettePrefab, cassette.position, cassette.rotation);
+                
                 newCassette.transform.localScale = cassette.scale;
-                
-                CassetteData data = Resources.Load<CassetteData>("Films/" + cassette.CassetteName.Trim());
-                
-                newCassette.GetComponent<PhysicalCassette>().Init(data);
+
+                if (filmsDictionary.TryGetValue(cassette.CassetteName.Trim(), out CassetteData data))
+                {
+                    newCassette.GetComponent<PhysicalCassette>().Init(data);
+                }
             }
 
             if (cassette.state == 2)
@@ -459,9 +638,10 @@ public class PlayerInventory : MonoBehaviour
                 Shelf targetShelf = System.Array.Find(allShelves, s => s.shelfGenre == cassette.shelfGenre);
                 if (targetShelf != null)
                 {
-                    CassetteData data = Resources.Load<CassetteData>("Films/" + cassette.CassetteName.Trim());
-                    
-                    targetShelf.CassetteIsPlaced(cassette.slotID, data);
+                    if (filmsDictionary.TryGetValue(cassette.CassetteName.Trim(), out CassetteData data))
+                    {
+                        targetShelf.CassetteIsPlaced(cassette.slotID, data);
+                    }
                 }
             }
         }
@@ -485,8 +665,27 @@ public class PlayerInventory : MonoBehaviour
         {
             transform.root.position = new Vector3(saveData.playerPosX, saveData.playerPosY, saveData.playerPosZ);
         }
+    }
+    
+    public bool IsTutorialActive()
+    {
+        bool isFirstActive = firstTutorialSlide != null && firstTutorialSlide.activeSelf;
+        bool isPickUpActive = pickUpTutorialSlide != null && pickUpTutorialSlide.activeSelf;
+        bool isPlaceActive = placeTutorialSlide != null && placeTutorialSlide.activeSelf;
+
+        return isFirstActive || isPickUpActive || isPlaceActive;
+    }
+    
+    public void CloseActiveTutorialSlide()
+    {
+        if (firstTutorialSlide != null && firstTutorialSlide.activeSelf) firstTutorialSlide.SetActive(false);
+        if (pickUpTutorialSlide != null && pickUpTutorialSlide.activeSelf) pickUpTutorialSlide.SetActive(false);
+        if (placeTutorialSlide != null && placeTutorialSlide.activeSelf) placeTutorialSlide.SetActive(false);
         
-        UpdateCassetteCounterInterface();
-        UpdateShelvesCounterInterface();
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }
+
+

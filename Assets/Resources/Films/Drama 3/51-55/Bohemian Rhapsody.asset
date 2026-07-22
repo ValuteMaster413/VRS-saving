@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d801ebcaab854af4aa8f9b9a0eecb8ac, type: 3}
+  m_Name: Bohemian Rhapsody
+  m_EditorClassIdentifier: Assembly-CSharp::CassetteData
+  title: Bohemian Rhapsody
+  genre: Drama 3
+  position: 53
+  description: 
+  coverArt: {fileID: -186966229, guid: e3cfe6e6516303a499e512b02c02b20a, type: 3}

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d801ebcaab854af4aa8f9b9a0eecb8ac, type: 3}
+  m_Name: 50 First Dates
+  m_EditorClassIdentifier: Assembly-CSharp::CassetteData
+  title: 50 First Dates
+  genre: Comedy 3
+  position: 41
+  description: 
+  coverArt: {fileID: -1478146618, guid: ba6ad07f046781f4a99e624c8c68ec65, type: 3}

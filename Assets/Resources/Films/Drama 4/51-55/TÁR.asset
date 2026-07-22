@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d801ebcaab854af4aa8f9b9a0eecb8ac, type: 3}
+  m_Name: "T\xC1R"
+  m_EditorClassIdentifier: Assembly-CSharp::CassetteData
+  title: "T\xC1R"
+  genre: Drama 4
+  position: 55
+  description: 
+  coverArt: {fileID: 42352664, guid: 1603abf0252ba66489ae4dde192d94bc, type: 3}

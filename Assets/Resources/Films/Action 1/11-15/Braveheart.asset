@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d801ebcaab854af4aa8f9b9a0eecb8ac, type: 3}
+  m_Name: Braveheart
+  m_EditorClassIdentifier: Assembly-CSharp::CassetteData
+  title: Braveheart
+  genre: Action 1
+  position: 11
+  description: "Enraged at the slaughter of Murron, his new bride and childhood love,
+    Scottish warrior William Wallace slays a platoon of the local English lord\u2019s
+    soldiers. This leads the village to revolt and, eventually, the entire country
+    to rise up against English rule.  "
+  coverArt: {fileID: -1047845626, guid: 7e650a10987559a4b8ac3893e7342dc9, type: 3}

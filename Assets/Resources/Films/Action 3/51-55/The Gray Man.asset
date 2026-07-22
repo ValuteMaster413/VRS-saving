@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d801ebcaab854af4aa8f9b9a0eecb8ac, type: 3}
+  m_Name: The Gray Man
+  m_EditorClassIdentifier: Assembly-CSharp::CassetteData
+  title: The Gray Man
+  genre: Action 3
+  position: 51
+  description: 
+  coverArt: {fileID: 271075385, guid: 6361f73f3e8226143aef411b668ea7b4, type: 3}

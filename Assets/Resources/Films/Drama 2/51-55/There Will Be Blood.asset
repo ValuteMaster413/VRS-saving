@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d801ebcaab854af4aa8f9b9a0eecb8ac, type: 3}
+  m_Name: There Will Be Blood
+  m_EditorClassIdentifier: Assembly-CSharp::CassetteData
+  title: There Will Be Blood
+  genre: Drama 2
+  position: 52
+  description: "Ruthless silver miner, turned oil prospector, Daniel Plainview, moves
+    to oil-rich California. Using his son to project a trustworthy, family-man image,
+    Plainview cons local landowners into selling him their valuable properties for
+    a pittance. However, local preacher Eli Sunday suspects Plainview\u2019s motives
+    and intentions, starting a slow-burning feud that threatens both their lives."
+  coverArt: {fileID: -818651256, guid: ac5beff9130448e469a79d9d5ee0878a, type: 3}

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d801ebcaab854af4aa8f9b9a0eecb8ac, type: 3}
+  m_Name: Once Upon a Time in America
+  m_EditorClassIdentifier: Assembly-CSharp::CassetteData
+  title: Once Upon a Time in America
+  genre: Drama 2
+  position: 25
+  description: A former Prohibition-era Jewish gangster returns to the Lower East
+    Side of Manhattan over thirty years later, where he once again must confront
+    the ghosts and regrets of his old life.
+  coverArt: {fileID: -1614876090, guid: d98a8cf98f7f2394fbf282590d7ff1f2, type: 3}

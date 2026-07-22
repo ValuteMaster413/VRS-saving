@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d801ebcaab854af4aa8f9b9a0eecb8ac, type: 3}
+  m_Name: The Life Aquatic with Steve Zissou
+  m_EditorClassIdentifier: Assembly-CSharp::CassetteData
+  title: The Life Aquatic with Steve Zissou
+  genre: Drama 2
+  position: 11
+  description: With a plan to exact revenge on a legendary shark that killed his
+    partner, oceanographer Steve Zissou rallies a crew that includes his estranged
+    wife, a journalist, and a man who may or may not be his son.
+  coverArt: {fileID: 467664909, guid: 371b6af23a41a47428696bf3d91f001d, type: 3}

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d801ebcaab854af4aa8f9b9a0eecb8ac, type: 3}
+  m_Name: Good Will Hunting
+  m_EditorClassIdentifier: Assembly-CSharp::CassetteData
+  title: Good Will Hunting
+  genre: Drama 2
+  position: 22
+  description: "Will Hunting is a headstrong, working-class genius who is failing
+    the lessons of life. After one too many run-ins with the law, Will\u2019s last
+    chance is a psychology professor, who might be the only man who can reach him."
+  coverArt: {fileID: -165538494, guid: 085d3babf3b8ce24a867084c2077c2f2, type: 3}

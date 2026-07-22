@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d801ebcaab854af4aa8f9b9a0eecb8ac, type: 3}
+  m_Name: High and Low
+  m_EditorClassIdentifier: Assembly-CSharp::CassetteData
+  title: High and Low
+  genre: Drama 2
+  position: 21
+  description: "A Yokohama shoe executive faces a wrenching choice when kidnappers
+    mistakenly seize his chauffeur\u2019s son but demand the ransom anyway."
+  coverArt: {fileID: 1013883961, guid: c568059bab5d5c8479b426ca32a69ce5, type: 3}

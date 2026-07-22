@@ -3194,177 +3194,152 @@ MonoBehaviour:
   slots:
   - slotID: 11
     expectedMovie: {fileID: 0}
-    countOfMovies: 5
+    countOfMovies: 4
     currentCount: 0
-    storedCassettes: []
     slotTransform: {fileID: 5679683206070493619}
     spawnedCassettes: []
   - slotID: 12
     expectedMovie: {fileID: 0}
-    countOfMovies: 5
+    countOfMovies: 4
     currentCount: 0
-    storedCassettes: []
     slotTransform: {fileID: 8383612141506930029}
     spawnedCassettes: []
   - slotID: 13
     expectedMovie: {fileID: 0}
-    countOfMovies: 5
+    countOfMovies: 4
     currentCount: 0
-    storedCassettes: []
     slotTransform: {fileID: 7233160122308300411}
     spawnedCassettes: []
   - slotID: 14
     expectedMovie: {fileID: 0}
-    countOfMovies: 5
+    countOfMovies: 4
     currentCount: 0
-    storedCassettes: []
     slotTransform: {fileID: 4232483872399422096}
     spawnedCassettes: []
   - slotID: 15
     expectedMovie: {fileID: 0}
-    countOfMovies: 5
+    countOfMovies: 4
     currentCount: 0
-    storedCassettes: []
     slotTransform: {fileID: 1935141688782796561}
     spawnedCassettes: []
   - slotID: 21
     expectedMovie: {fileID: 0}
-    countOfMovies: 5
+    countOfMovies: 4
     currentCount: 0
-    storedCassettes: []
     slotTransform: {fileID: 4659204879819686442}
     spawnedCassettes: []
   - slotID: 22
     expectedMovie: {fileID: 0}
-    countOfMovies: 5
+    countOfMovies: 4
     currentCount: 0
-    storedCassettes: []
     slotTransform: {fileID: 8778410925781132168}
     spawnedCassettes: []
   - slotID: 23
     expectedMovie: {fileID: 0}
-    countOfMovies: 5
+    countOfMovies: 4
     currentCount: 0
-    storedCassettes: []
     slotTransform: {fileID: 4658987113881991948}
     spawnedCassettes: []
   - slotID: 24
     expectedMovie: {fileID: 0}
-    countOfMovies: 5
+    countOfMovies: 4
     currentCount: 0
-    storedCassettes: []
     slotTransform: {fileID: 8940302498722404533}
     spawnedCassettes: []
   - slotID: 25
     expectedMovie: {fileID: 0}
-    countOfMovies: 5
+    countOfMovies: 4
     currentCount: 0
-    storedCassettes: []
     slotTransform: {fileID: 1095364620066154346}
     spawnedCassettes: []
   - slotID: 31
     expectedMovie: {fileID: 0}
-    countOfMovies: 5
+    countOfMovies: 4
     currentCount: 0
-    storedCassettes: []
     slotTransform: {fileID: 1977547225449719021}
     spawnedCassettes: []
   - slotID: 32
     expectedMovie: {fileID: 0}
-    countOfMovies: 5
+    countOfMovies: 4
     currentCount: 0
-    storedCassettes: []
     slotTransform: {fileID: 6235876562596890024}
     spawnedCassettes: []
   - slotID: 33
     expectedMovie: {fileID: 0}
-    countOfMovies: 5
+    countOfMovies: 4
     currentCount: 0
-    storedCassettes: []
     slotTransform: {fileID: 6398887571148776286}
     spawnedCassettes: []
   - slotID: 34
     expectedMovie: {fileID: 0}
-    countOfMovies: 5
+    countOfMovies: 4
     currentCount: 0
-    storedCassettes: []
     slotTransform: {fileID: 5136388303549220336}
     spawnedCassettes: []
   - slotID: 35
     expectedMovie: {fileID: 0}
-    countOfMovies: 5
+    countOfMovies: 4
     currentCount: 0
-    storedCassettes: []
     slotTransform: {fileID: 3832458708502295796}
     spawnedCassettes: []
   - slotID: 41
     expectedMovie: {fileID: 0}
-    countOfMovies: 5
+    countOfMovies: 4
     currentCount: 0
-    storedCassettes: []
     slotTransform: {fileID: 629148077957132689}
     spawnedCassettes: []
   - slotID: 42
     expectedMovie: {fileID: 0}
-    countOfMovies: 5
+    countOfMovies: 4
     currentCount: 0
-    storedCassettes: []
     slotTransform: {fileID: 4260929826480085207}
     spawnedCassettes: []
   - slotID: 43
     expectedMovie: {fileID: 0}
-    countOfMovies: 5
+    countOfMovies: 4
     currentCount: 0
-    storedCassettes: []
     slotTransform: {fileID: 7239745023721295015}
     spawnedCassettes: []
   - slotID: 44
     expectedMovie: {fileID: 0}
-    countOfMovies: 5
+    countOfMovies: 4
     currentCount: 0
-    storedCassettes: []
     slotTransform: {fileID: 804305607613084471}
     spawnedCassettes: []
   - slotID: 45
     expectedMovie: {fileID: 0}
-    countOfMovies: 5
+    countOfMovies: 4
     currentCount: 0
-    storedCassettes: []
     slotTransform: {fileID: 1779531867040382936}
     spawnedCassettes: []
   - slotID: 51
     expectedMovie: {fileID: 0}
-    countOfMovies: 5
+    countOfMovies: 4
     currentCount: 0
-    storedCassettes: []
     slotTransform: {fileID: 8242343540146838314}
     spawnedCassettes: []
   - slotID: 52
     expectedMovie: {fileID: 0}
-    countOfMovies: 5
+    countOfMovies: 4
     currentCount: 0
-    storedCassettes: []
     slotTransform: {fileID: 943106084346607176}
     spawnedCassettes: []
   - slotID: 53
     expectedMovie: {fileID: 0}
-    countOfMovies: 5
+    countOfMovies: 4
     currentCount: 0
-    storedCassettes: []
     slotTransform: {fileID: 5091582987657833054}
     spawnedCassettes: []
   - slotID: 54
     expectedMovie: {fileID: 0}
-    countOfMovies: 5
+    countOfMovies: 4
     currentCount: 0
-    storedCassettes: []
     slotTransform: {fileID: 9118228427981472789}
     spawnedCassettes: []
   - slotID: 55
     expectedMovie: {fileID: 0}
-    countOfMovies: 5
+    countOfMovies: 4
     currentCount: 0
-    storedCassettes: []
     slotTransform: {fileID: 4286745464805390583}
     spawnedCassettes: []
   cassettePrefab: {fileID: 1228803241651126480, guid: 351d4987720b9194ab0d2bca308ad36a, type: 3}

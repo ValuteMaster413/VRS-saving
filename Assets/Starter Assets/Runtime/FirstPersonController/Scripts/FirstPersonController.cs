@@ -50,7 +50,13 @@ namespace StarterAssets
 		public float TopClamp = 90.0f;
 		[Tooltip("How far in degrees can you move the camera down")]
 		public float BottomClamp = -90.0f;
-
+		
+		[Header("Footsteps SFX")]
+		public AudioSource footstepAudioSource;
+		public AudioClip[] footstepSounds;
+		public float stepInterval = 0.45f;
+		private float _stepTimer;
+		
 		// cinemachine
 		private float _cinemachineTargetPitch;
 
@@ -193,9 +199,29 @@ namespace StarterAssets
 				// move
 				inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
 			}
-
-			// move the player
+			
 			_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+			if (Grounded && _controller.velocity.sqrMagnitude > 0.1f)
+			{
+				_stepTimer -= Time.deltaTime;
+
+				if (_stepTimer <= 0f)
+				{
+					_stepTimer = stepInterval;
+
+					if (footstepSounds != null && footstepSounds.Length > 0 && footstepAudioSource != null)
+					{
+						int index = Random.Range(0, footstepSounds.Length);
+						
+						footstepAudioSource.pitch = Random.Range(0.9f, 1.1f);
+						footstepAudioSource.PlayOneShot(footstepSounds[index]);
+					}
+				}
+			}
+			else
+			{
+				_stepTimer = 0f;
+			}
 		}
 
 		private void JumpAndGravity()

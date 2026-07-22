@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d801ebcaab854af4aa8f9b9a0eecb8ac, type: 3}
+  m_Name: Leon The Professional
+  m_EditorClassIdentifier: Assembly-CSharp::CassetteData
+  title: Leon The Professional
+  genre: Drama 1
+  position: 51
+  description: When her family is murdered by a group of corrupt officers led by
+    the tyrannical Norman Stansfield, a young 12-year-old girl enlists the help of
+    an Italian-American hitman to seek revenge.
+  coverArt: {fileID: 1922107938, guid: c36495fde9d4db249982c884a0e5f18f, type: 3}

@@ -148,7 +148,7 @@ public class Shelf : MonoBehaviour
         
         if (outline != null)
         {
-            PlayerInventory inventory = FindObjectOfType<PlayerInventory>();
+            PlayerInventory inventory = PlayerInventory.Instance;
             
             outline.OutlineColor = Color.white;
             outline.OutlineWidth = 2f;

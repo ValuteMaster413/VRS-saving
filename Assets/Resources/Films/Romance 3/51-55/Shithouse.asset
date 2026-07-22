@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d801ebcaab854af4aa8f9b9a0eecb8ac, type: 3}
+  m_Name: Shithouse
+  m_EditorClassIdentifier: Assembly-CSharp::CassetteData
+  title: Shithouse
+  genre: Romance 3
+  position: 55
+  description: 
+  coverArt: {fileID: 489685536, guid: 97abc020d741c854485478c34e80c61c, type: 3}
