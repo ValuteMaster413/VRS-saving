@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d801ebcaab854af4aa8f9b9a0eecb8ac, type: 3}
+  m_Name: "Chainsaw Man \u2013 Reze Arc"
+  m_EditorClassIdentifier: Assembly-CSharp::CassetteData
+  title: "Chainsaw Man \u2013 Reze Arc"
+  genre: Animation 4
+  position: 51
+  description: 
+  coverArt: {fileID: -415496623, guid: c3bf3c1e11b5c3a49b5894790ea5160f, type: 3}

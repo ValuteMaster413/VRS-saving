@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d801ebcaab854af4aa8f9b9a0eecb8ac, type: 3}
+  m_Name: The Hunt Documentary
+  m_EditorClassIdentifier: Assembly-CSharp::CassetteData
+  title: The Hunt Documentary
+  genre: Documentary 3
+  position: 43
+  description: 
+  coverArt: {fileID: 1706093585, guid: ece60aeb243e5c548aeb761335d84867, type: 3}

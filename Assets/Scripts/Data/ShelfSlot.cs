@@ -10,6 +10,7 @@ public class ShelfSlot
     public int countOfMovies;
     public int currentCount = 0;
     public Transform slotTransform;
+    public bool isExpAwarded = false;
     public List<GameObject> spawnedCassettes = new List<GameObject>();
 
     public bool IsRightFilled()
@@ -18,19 +19,31 @@ public class ShelfSlot
             
         foreach (var cas in spawnedCassettes)
         {
-            if (cas.GetComponent<PhysicalCassette>().cassetteData == expectedMovie)
+            if (cas != null && cas.GetComponent<PhysicalCassette>().cassetteData == expectedMovie)
             {
                 cassetteCount++;
             }
         }
 
-        if (cassetteCount == countOfMovies)
+        return cassetteCount == countOfMovies;
+    }
+
+    public bool CheckAndAward()
+    {
+        if (IsRightFilled() && !isExpAwarded)
         {
+            isExpAwarded = true;
             return true;
         }
-        else 
+
+        return false;
+    }
+    
+    public void RestoreAwardedStatusOnLoad()
+    {
+        if (IsRightFilled())
         {
-            return false;
+            isExpAwarded = true;
         }
     }
 }

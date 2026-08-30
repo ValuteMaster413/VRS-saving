@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d801ebcaab854af4aa8f9b9a0eecb8ac, type: 3}
+  m_Name: Spider-Man Into the Spider-Verse
+  m_EditorClassIdentifier: Assembly-CSharp::CassetteData
+  title: Spider-Man Into the Spider-Verse
+  genre: Animation 1
+  position: 11
+  description: 
+  coverArt: {fileID: -352991543, guid: 743f0f22bd0b8ba4b91cc688524f31f9, type: 3}

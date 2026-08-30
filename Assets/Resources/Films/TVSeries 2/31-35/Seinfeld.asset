@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d801ebcaab854af4aa8f9b9a0eecb8ac, type: 3}
+  m_Name: Seinfeld
+  m_EditorClassIdentifier: Assembly-CSharp::CassetteData
+  title: Seinfeld
+  genre: TVSeries 2
+  position: 31
+  description: 
+  coverArt: {fileID: 629615252, guid: 4fab5c0fd86587c41ab69cc1f246478e, type: 3}

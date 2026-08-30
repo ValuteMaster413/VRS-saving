@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d801ebcaab854af4aa8f9b9a0eecb8ac, type: 3}
+  m_Name: When Evil Lurks
+  m_EditorClassIdentifier: Assembly-CSharp::CassetteData
+  title: When Evil Lurks
+  genre: Horror 3
+  position: 21
+  description: 
+  coverArt: {fileID: 1411884952, guid: ba0ed5b69bfec1e4785897633c7c9abf, type: 3}

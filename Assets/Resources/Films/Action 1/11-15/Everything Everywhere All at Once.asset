@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Everything Everywhere All at Once
   m_EditorClassIdentifier: Assembly-CSharp::CassetteData
   title: Everything Everywhere All at Once
-  genre: Drama 1
+  genre: Action 1
   position: 15
   description: 
   coverArt: {fileID: -1719791273, guid: b5997392c5859db48aafad3828a773e9, type: 3}

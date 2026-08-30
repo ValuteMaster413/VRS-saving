@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d801ebcaab854af4aa8f9b9a0eecb8ac, type: 3}
+  m_Name: The Texas Chain Saw Massacre
+  m_EditorClassIdentifier: Assembly-CSharp::CassetteData
+  title: The Texas Chain Saw Massacre
+  genre: Horror 1
+  position: 51
+  description: 
+  coverArt: {fileID: 1028261895, guid: 0dd6dae7ed72fc04f87c0b64aaf57946, type: 3}

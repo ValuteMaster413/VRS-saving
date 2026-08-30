@@ -15,6 +15,12 @@ public class PauseController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            SkillMenuUI skillMenu = FindObjectOfType<SkillMenuUI>();
+            if (skillMenu != null && skillMenu.IsMenuOpen)
+            {
+                return; 
+            }
+            
             if (PlayerInventory.Instance != null && PlayerInventory.Instance.IsTutorialActive())
             {
                 PlayerInventory.Instance.CloseActiveTutorialSlide();

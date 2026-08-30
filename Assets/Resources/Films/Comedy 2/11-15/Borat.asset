@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Borat
   m_EditorClassIdentifier: Assembly-CSharp::CassetteData
   title: Borat
-  genre: Comedy 1
+  genre: Comedy 2
   position: 13
   description: 
   coverArt: {fileID: -1614659275, guid: 1dc06dc7d5b69e44fb6a8ec6abba7a7f, type: 3}
