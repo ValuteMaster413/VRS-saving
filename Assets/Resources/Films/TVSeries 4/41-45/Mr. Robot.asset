@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mr. Robot
   m_EditorClassIdentifier: Assembly-CSharp::CassetteData
   title: Mr. Robot
-  genre: 
+  genre: TVSeries 4
   position: 42
   description: 
-  coverArt: {fileID: 0}
+  coverArt: {fileID: 798743568, guid: 11cb14c5c4019944dab2c2fdb06b3b80, type: 3}

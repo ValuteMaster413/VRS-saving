@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: The Queen's Gambit
   m_EditorClassIdentifier: Assembly-CSharp::CassetteData
   title: The Queen's Gambit
-  genre: 
+  genre: TVSeries 4
   position: 44
   description: 
-  coverArt: {fileID: 0}
+  coverArt: {fileID: -493000028, guid: 0cd80f7bd74153444b08deb85b0721b4, type: 3}

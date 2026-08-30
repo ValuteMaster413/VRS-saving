@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 77b41288e70b16540ad7a547065ba1e3
+guid: a7d8450c343606d4aabcdc919d86fdb7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: vrs keeper logo-02_0
+      name: Battlestar Galactica_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 600
-        height: 299
+        width: 1000
+        height: 1471
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -138,8 +138,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f942c996770e43488c044e317f11279
-      internalID: -63912175
+      spriteID: 4efe98a4cee075e4289f6dcaa4a4d45d
+      internalID: -1537268328
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: de3240494045cfb45aa0d7f1a8f9ad3e
+    spriteID: 0e4d7b0512493774c969aa0e9aba2e8b
     internalID: 0
     vertices: []
     indices: 
@@ -160,7 +160,7 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      vrs keeper logo-02_0: -63912175
+      Battlestar Galactica_0: -1537268328
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Battlestar Galactica
   m_EditorClassIdentifier: Assembly-CSharp::CassetteData
   title: Battlestar Galactica
-  genre: 
+  genre: TVSeries 4
   position: 41
   description: 
-  coverArt: {fileID: 0}
+  coverArt: {fileID: -1537268328, guid: a7d8450c343606d4aabcdc919d86fdb7, type: 3}

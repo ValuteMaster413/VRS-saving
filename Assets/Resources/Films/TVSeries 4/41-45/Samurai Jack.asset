@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Samurai Jack
   m_EditorClassIdentifier: Assembly-CSharp::CassetteData
   title: Samurai Jack
-  genre: 
+  genre: TVSeries 4
   position: 43
   description: 
-  coverArt: {fileID: 0}
+  coverArt: {fileID: -917339823, guid: ca77b6973de40d742afd523b47ae00a5, type: 3}

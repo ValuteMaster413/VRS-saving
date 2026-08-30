@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mob Psycho 100
   m_EditorClassIdentifier: Assembly-CSharp::CassetteData
   title: Mob Psycho 100
-  genre: 
+  genre: TVSeries 4
   position: 45
   description: 
-  coverArt: {fileID: 0}
+  coverArt: {fileID: 343309777, guid: 0eb6199e53581e4409445cfe3a8d7a84, type: 3}
