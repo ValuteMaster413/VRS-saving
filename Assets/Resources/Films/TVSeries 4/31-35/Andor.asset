@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Andor
   m_EditorClassIdentifier: Assembly-CSharp::CassetteData
   title: Andor
-  genre: TVSeries 3
+  genre: TVSeries 4
   position: 31
   description: 
   coverArt: {fileID: -1534753310, guid: 3f7840fd2502c244fa55806fae2c5619, type: 3}

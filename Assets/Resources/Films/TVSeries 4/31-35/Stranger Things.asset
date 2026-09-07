@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Stranger Things
   m_EditorClassIdentifier: Assembly-CSharp::CassetteData
   title: Stranger Things
-  genre: TVSeries 3
+  genre: TVSeries 4
   position: 35
   description: 
   coverArt: {fileID: -1334586225, guid: 660eb5e39d92fa744bc41e8cc8bac6a3, type: 3}

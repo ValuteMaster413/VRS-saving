@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: The Offer
   m_EditorClassIdentifier: Assembly-CSharp::CassetteData
   title: The Offer
-  genre: TVSeries 3
+  genre: TVSeries 4
   position: 33
   description: 
   coverArt: {fileID: -1936286031, guid: e80a70ea618721d41af690f3c532a680, type: 3}

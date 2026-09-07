@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "Sh\u014Dgun"
   m_EditorClassIdentifier: Assembly-CSharp::CassetteData
   title: "Sh\u014Dgun"
-  genre: TVSeries 3
+  genre: TVSeries 4
   position: 32
   description: 
   coverArt: {fileID: -591592541, guid: c932010966de16c44a35afacc4a5d72c, type: 3}

@@ -102901,7 +102901,7 @@ PrefabInstance:
 
         S
 
-        1'
+        2'
       objectReference: {fileID: 0}
     - target: {fileID: 4007500945451609308, guid: 55823ff6286b243409ee41437d5ab344, type: 3}
       propertyPath: m_fontSize
@@ -161533,7 +161533,7 @@ PrefabInstance:
 
         S
 
-        1'
+        3'
       objectReference: {fileID: 0}
     - target: {fileID: 4007500945451609308, guid: 55823ff6286b243409ee41437d5ab344, type: 3}
       propertyPath: m_fontSize
@@ -253073,7 +253073,7 @@ PrefabInstance:
 
         S
 
-        1'
+        4'
       objectReference: {fileID: 0}
     - target: {fileID: 4007500945451609308, guid: 55823ff6286b243409ee41437d5ab344, type: 3}
       propertyPath: m_fontSize
